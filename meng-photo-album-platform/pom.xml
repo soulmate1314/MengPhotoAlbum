@@ -7,9 +7,24 @@
         <groupId>com.yansir</groupId>
         <version>1.0.0</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
-
+    <groupId>com.yansir</groupId>
     <artifactId>meng-photo-album-platform</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.yansir</groupId>
+            <artifactId>meng-photo-album-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!--自定义jar名称-->
+        <finalName>meng-photo-album</finalName>
+    </build>
 
 </project>
