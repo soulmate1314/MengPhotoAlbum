@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yansir.po.mengphotoalbum.mapper.UserMapperExt">
+
+
+    <select id="queryUserPage" parameterType="com.yansir.vo.BaseQeryVO" resultMap="ResultMap">
+        SELECT
+        <include refid="Column_List" />
+        FROM t_user
+        <where>
+            <if test="keyword != null and keyword != ''">
+                user_name LIKE CONCAT('',#{keyword},'%')
+            </if>
+        </where>
+    </select>
+
+    <sql id="Column_List">
+        id, user_name, password, department_id, email, telephone, status, creator, modifier,
+        gmt_create, gmt_modified, is_deleted
+    </sql>
+
+    <resultMap id="ResultMap" type="com.yansir.po.mengphotoalbum.User">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="user_name" jdbcType="VARCHAR" property="userName" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="creator" jdbcType="INTEGER" property="creator" />
+        <result column="modifier" jdbcType="INTEGER" property="modifier" />
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+        <result column="is_deleted" jdbcType="CHAR" property="isDeleted" />
+    </resultMap>
+
+
+
+    <insert id="insertBatchUser" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_user
+        (user_name, password, department_id, email,telephone,status,creator,gmt_create,is_deleted)
+        VALUES
+        <foreach collection ="list" item="item" index= "index" separator =",">
+            (
+            #{item.userName},
+            #{item.password},
+            #{item.departmentId},
+            #{item.email},
+            #{item.telephone},
+            #{item.status},
+            #{item.creator},
+            #{item.gmtCreate},
+            #{item.isDeleted}
+            )
+        </foreach >
+    </insert>
+</mapper>

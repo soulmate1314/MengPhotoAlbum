@@ -6,6 +6,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
+@EnableAsync
+@org.mybatis.spring.annotation.MapperScan("com.yansir.po.*.mapper")
 public class MengPhotoAlbumApplication {
     public static void main(String[] args) {
         System.out.println("The service to start.");
