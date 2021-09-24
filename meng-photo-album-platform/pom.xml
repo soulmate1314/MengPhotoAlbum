@@ -25,6 +25,24 @@
     <build>
         <!--自定义jar名称-->
         <finalName>meng-photo-album</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.4.1.RELEASE</version>
+                <configuration>
+                    <mainClass>com.yansir.MengPhotoAlbumApplication</mainClass><!--springboot启动类目录-->
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 
 </project>
