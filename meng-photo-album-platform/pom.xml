@@ -43,6 +43,22 @@
                 </executions>
             </plugin>
         </plugins>
+        <!--静态文件打包路径-->
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources/static</directory>
+                <targetPath>META-INF/resources</targetPath>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 
 </project>

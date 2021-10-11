@@ -28,4 +28,4 @@ mapper:
 
 logging:
     level:
-      com.yansir.third.dal.third.mapper: DEBUG
+      com.yansir.po.mengphotoalbum.mapper: DEBUG
